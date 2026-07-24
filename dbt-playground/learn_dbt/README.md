@@ -13,3 +13,16 @@ Try running the following commands:
 - Join the [chat](https://community.getdbt.com/) on Slack for live discussions and support
 - Find [dbt events](https://events.getdbt.com) near you
 - Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
+
+# What is Sources.yml
+- sources.yml is a YAML file under the models/ directory that tells dbt:
+    These tables already exist in the warehouse - dbt does NOT build them, but I want to reference, test, and document them.
+- Without sources:
+    - Raw tables are just hard-coded strings
+    - No freshness checks
+    - No upstream visibility in dbt docs
+- With sources:
+    - Centralized table definitions
+    - Built-in data quality tests
+    - Freshness monitoring
+    - Clear lineage (raw -> staging -> marts)
