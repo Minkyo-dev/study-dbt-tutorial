@@ -26,3 +26,14 @@ Try running the following commands:
     - Built-in data quality tests
     - Freshness monitoring
     - Clear lineage (raw -> staging -> marts)
+
+## Key purpose of dbt sources
+- Explicitly declare raw data
+    - You define where raw data lives (scheam + table) in YAML.
+- Enable data freshness checks
+    - dbt can warn you if upstream data is stale.
+- Improve lineage & documentation
+    - Sources appear in dbt docs
+    - DAG / lineage graphs
+- Safer refactoring
+    - If schema or table names change, you update YAML, not every SQL file.
