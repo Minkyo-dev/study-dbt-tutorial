@@ -1,23 +1,30 @@
 
-# name: Unique project name (lowercase + underscores only)
+# Name your project! Project names should contain only lowercase characters
+# and underscores. A good package name should reflect your organization's
+# name or the intended use of these models
+# name: Unique project name (lowercase + underscore only)
 # version: Project version (useful for packages and releases)
 name: 'learn_dbt'
 version: '1.0.0'
 
+# This setting configures which "profile" dbt uses for this project.
 # Tells dbt which profile to use from profiles.yml
 # The profile defines:
-#  database type (Snowflake, BigQuery, Postgres, etc.)
-#  credentials
-#  target schema
+#   database type (Snowflake, BigQuery, Postgres, etc)
+#   credentials
+#   target schema
 profile: 'learn_dbt'
 
-# SQL models (core of dbt)
+# These configurations specify where dbt should look for different types of files.
+# The `model-paths` config, for example, states that models in this project can be
+# found in the "models/" directory. You probably won't need to change these!
+# SQL model (core of dbt)
 model-paths: ["models"]
 # Ad-hoc SQL (not built)
 analysis-paths: ["analyses"]
 # Generic & custom tests
 test-paths: ["tests"]
-# CSV files loaded as tables
+# CSV files loaded tests
 seed-paths: ["seeds"]
 # Jinja macros
 macro-paths: ["macros"]
@@ -37,15 +44,6 @@ clean-targets:         # directories to be removed by `dbt clean`
 # files using the `{{ config(...) }}` macro.
 models:
   learn_dbt:
-    +materialized: view  # default for all models in the project
-    staging:
-      +materialized: ephemeral  # apply to child models
-    marts:
-      +materialized: table # apply to child models
-
-vars:
-  lookback_interval: '3 days'
-
-seeds:
-  learn_dbt:
-    +quote_columns: false
+    # Config indicated by + and applies to all files under models/example/
+    example:
+      +materialized: view
